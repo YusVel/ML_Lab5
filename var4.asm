@@ -10,12 +10,12 @@ xor rcx,rcx
 xor rbx,rbx
     while:
     cmp rcx,   qword [N]
-    je endwhile
-    mov rax, [arr+rcx]
+    jge endwhile
+    mov rax, [arr+rcx*8]
     inc rcx;
     cmp rax,qword [A]
     jge condition
-
+back_condition:
     cmp rcx,  qword [N]
     jl while
     endwhile:
@@ -24,8 +24,7 @@ xor rbx,rbx
     ret
 
     condition:
-        inc rcx
         cmp rax,qword [B]
-        jge while
+        jg back_condition
         inc rbx
-        jmp while
+        jmp back_condition

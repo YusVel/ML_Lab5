@@ -6,4 +6,4 @@ all:
 	nasm -f elf64 -F dwarf var4.asm -o var4.o
 	gcc -ggdb -c main.c -o main.o 
 	gcc -g3 main.o print.o print_rax.o print_xmm0.o get_valid_num.o var4.o -o main -no-pie
-	./main
+	gdb ./main
